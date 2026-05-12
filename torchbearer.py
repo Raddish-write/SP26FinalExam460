@@ -34,7 +34,13 @@ def explain_problem():
 
     TODO
     """
-    return "TODO"
+    ans = ("Why a single shortest-path run from S is not enough:"
+           "A single shortest path run is not enough for the torchbearer problem because a shortest path may possibly skip over some relic rooms and a valid route is defined here in part as one that collects every relic."
+           "What decision remains after all inter-location costs are known:"
+           "After the cost to travel between every room has been calculated, the order of the rooms must then be selected."
+           "Why this requires a search over orders (one sentence): "
+           "Because every node must be visited, you cannot greedily select the closest node to the last which means that valid orders must be compared in order to determine the lowest order.")
+    return ans
 
 
 # =============================================================================
@@ -56,7 +62,12 @@ def select_sources(spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    sourceList = [spawn, exit_node]
+    for x in relics:
+        if x not in sourceList:
+            sourceList.append(x)
+
+    return sourceList
 
 
 def run_dijkstra(graph, source):
@@ -75,7 +86,27 @@ def run_dijkstra(graph, source):
 
     TODO
     """
-    pass
+    val = dict()
+    for key in graph:
+        val[key] = float('inf')
+    val[source] = 0
+
+    min_heap = []
+    heapq.heappush(min_heap, (0, source))
+
+    while min_heap:
+        (dist, node) = heapq.heappop(min_heap)
+
+        if dist > val[node]:
+            continue
+
+        for nextNode, edgeWeight in graph[node]:
+            temp = val[node] + edgeWeight
+            if temp < val[nextNode]:
+                val[nextNode] = temp
+                heapq.heappush(min_heap, (val[nextNode], nextNode))
+
+    return val
 
 
 def precompute_distances(graph, spawn, relics, exit_node):
@@ -95,7 +126,13 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    sources = select_sources(spawn, relics, exit_node)
+    distances = dict()
+    for key in sources:
+        node_dist = run_dijkstra(graph, key)
+        distances[key] = node_dist
+
+    return distances
 
 
 # =============================================================================
