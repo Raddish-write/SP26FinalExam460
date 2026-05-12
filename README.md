@@ -20,10 +20,10 @@
   _A single shortest path run is not enough for the torchbearer problem because a shortest path may possibly skip over some relic rooms and a valid route is defined here in part as one that collects every relic._
 
 - **What decision remains after all inter-location costs are known:**
-  _After the cost to travel between every room has been calculated, the order of the rooms must then be selected._
+  _After the cost to travel between every room has been calculated, the order of relic and/or end rooms visited must be selected._
 
 - **Why this requires a search over orders (one sentence):**
-  _Because every node must be visited, you cannot greedily select the closest node to the last which means that valid orders must be compared in order to determine the lowest order._
+  _Because the graph is directed and weighted, going one direction down the path may increase cost dramatically for a future decision despite being the best choice from that node so multiple valid paths must be compared._
 
 ---
 
