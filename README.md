@@ -1,7 +1,7 @@
 # The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** Michael Milton
+**Student ID:** 132765149
 **Course:** CS 460 – Algorithms | Spring 2026
 
 > This README is your project documentation. Write it the way a developer would document
@@ -17,13 +17,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+  _A single shortest path run is not enough for the torchbearer problem because a shortest path may possibly skip over some relic rooms and a valid route is defined here in part as one that collects every relic._
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+  _After the cost to travel between every room has been calculated, the order of the rooms must then be selected._
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
+  _Because every node must be visited, you cannot greedily select the closest node to the last which means that valid orders must be compared in order to determine the lowest order._
 
 ---
 
