@@ -35,8 +35,9 @@
 
 | Source Node Type | Why it is a source |
 |---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+| _Start Node_ | _The Torch Bearer is garunteed to start at the start node and so must travel some distance from here every time_ |
+| _Relic Node_ | _Each relic node must be visited in order to be a valid path, and so must travel some distance from here every time_ |
+| _Exit Node_ | _The exit node must be reachable from all relic nodes and must be visited, and so is highly likely to be backtracked from as well_ |
 
 ### Part 2b: Distance Storage
 
@@ -44,20 +45,20 @@
 
 | Property | Your answer |
 |---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Data structure name | _Dictionary_ |
+| What the keys represent | _Each key represents the starting Node from which we are measuring distance from_ |
+| What the values represent | _The values are themselves dictionaries, where each key represents a node connected to the source node and the value is the shortest distance between them_|
+| Lookup time complexity | _Dictionary lookup time complexity is O(1) or constant. To lookup distance from one node to another is constant, and from a source to every other node is _ |
+| Why O(1) lookup is possible | _Dictionary keys point directly to a memory location via hashing with is (generally) a constant speed operation_ |
 
 ### Part 2c: Precomputation Complexity
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** _your answer_
-- **Cost per run:** _your answer_
-- **Total complexity:** _your answer_
-- **Justification (one line):** _your answer_
+- **Number of Dijkstra runs:** _Once per relic room and again once for the start and end node_
+- **Cost per run:** _For every time it is run, it is called once per Vertex and once per Edge_
+- **Total complexity:** _O((E+V)logV)_
+- **Justification (one line):** _Each edge and each Vertex must be considered for every call, so it must be at least E+V. However, the Queue (which is filled along verticies) is a minheap which scales logarithmically and so is (E+V)logV_
 
 ---
 
