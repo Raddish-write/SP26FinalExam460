@@ -17,6 +17,8 @@
 
 My initial plan is to first Analyze the problem as outlined in part 1 and begin on building structures for Djikstra's path selection as outlined in part 2. If I have time, I will begin on part 3 and determine correctness for the Djikstra's method as well, and potententially move into outlining why Greedy selection fails. 
 
+Update: Q1 and Q2 completed, and code has been committed and pushed. Q3 and Q4 slotted for tomorrow. 
+
 ---
 
 ## Entry 2 – [Date]: [Short description]
@@ -49,8 +51,8 @@ _Your entry here._
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | |
-| Part 2: Precomputation Design | |
+| Part 1: Problem Analysis | _1_ |
+| Part 2: Precomputation Design | _1.5_ |
 | Part 3: Algorithm Correctness | |
 | Part 4: Search Design | |
 | Part 5: State and Search Space | |
