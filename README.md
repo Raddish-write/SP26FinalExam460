@@ -73,29 +73,31 @@
 > Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
-  _Your answer here._
+  + _The stored value for finalized nodes are the shortest distance from source node._
 
 - **For nodes not yet finalized (not in S):**
-  _Your answer here._
+  + _The stored balue for unfinalized nodes are shortest distance from source node, considering connections to finalized nodes._
 
 ### Part 3b: Why Each Phase Holds
 
 > One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
-  _Your answer here._
+  + _Only the start node is finalized with a dist of 0._
+  + _As no intermediate nodes have been considered, and each is infinitely far from the source, the invariant holds._
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  _Your answer here._
+  + _Prior to any step, stored values are either shortest distance from source or shortest considering only finalized nodes._
+  + _Because each edge has a weight >= 0 and so can never decrease total distance traveled, the stored value is the lowest possible distance and thus the invariant holds._
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  _Your answer here._
+  _Once the minheap is empty (all nodes are considered) the only the shortest cumulative weights have been selected and thus the invariant holds._
 
 ### Part 3c: Why This Matters for the Route Planner
 
 > One sentence connecting correct distances to correct routing decisions.
 
-_Your answer here._
+_The route planner relies on this function to calculate the distances of all valid routes, and so this function must also be correct._
 
 ---
 
@@ -106,17 +108,24 @@ _Your answer here._
 > State the failure mode. Then give a concrete counter-example using specific node names
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode:** _Proof by counterexample (i.e greedy does not provide optimal solution)._
+- **Counter-example setup:** _Consider the following graph:._
+  + _S : [(B, 1), (C, 2), (D, 2)]_
+  + _B : [(D, 1), (T, 1)]_
+  + _C : [(B, 1), (T, 10)]_
+  + _D : [(B, 1), (C, 1)]_
+  + _T : []_
+- _Consider the following strategy:_
+  + _Choose the lowest edge relic/exit node that has not yet been selected_
+- **What greedy picks:** _S -> B -> D -> C -> T, with a distance of 13._
+- **What optimal picks:** _S -> D -> C -> B -> T, with a distance of 5._
+- **Why greedy loses:** _Because choosing the locally optimal choice restricts future globally optimal choices, greedy does not gauruntee optimal._
 
 ### What the Algorithm Must Explore
 
 > One bullet. Must use the word "order."
 
-- _Your answer here._
+- _The algorithm must explore and compare valid room orders and their cumulutive distances, removing any longer than the previous hortest path considered._
 
 ---
 
