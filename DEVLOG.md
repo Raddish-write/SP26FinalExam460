@@ -58,8 +58,8 @@ _Your entry here._
 |---|---|
 | Part 1: Problem Analysis | _1_ |
 | Part 2: Precomputation Design | _1.5_ |
-| Part 3: Algorithm Correctness | |
-| Part 4: Search Design | |
+| Part 3: Algorithm Correctness | _1_ |
+| Part 4: Search Design | _4_ |
 | Part 5: State and Search Space | |
 | Part 6: Pruning | |
 | Part 7: Implementation | |
