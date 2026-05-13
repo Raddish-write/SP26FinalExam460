@@ -230,8 +230,51 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    relics_remaining = set(relics)
 
+    """greedy may not always be optimal, but it will be valid and provides a relatively low upper bound"""
+    best = _greedy(spawn, dist_table, relics_remaining, exit_node)
+    visited = list()
+    _explore(dist_table, spawn, relics_remaining, visited, 0, exit_node, best)
+
+    return best
+
+def _greedy(spawn, dist_table, relics_remaining, exit_node):
+    """
+    Helper function to find starting "best" distance to prune execesive branches
+
+    Parameters
+    -------
+    spawn : node
+    dist_table : dict[node, dict[node, float]]
+
+    Returns
+    -------
+    tuple[float, list(node)]
+
+    """
+
+    temp_node = spawn
+    set_check = relics_remaining.copy()
+    """I hate python so much. Why am I able to modify collections outside of their parent function? Why does .copy() need to exist?"""
+    greedy_list = list()
+    dist = 0
+    while set_check:
+        temp_dist = float('inf')
+        for key in dist_table[temp_node]:
+            if (dist_table[temp_node][key] < temp_dist and key in set_check):
+                neighbor = key
+                temp_dist = dist_table[temp_node][key]
+        set_check.remove(neighbor)
+        greedy_list.append(neighbor)
+        temp_node = neighbor
+        dist += temp_dist
+
+    greedy_list.append(exit_node)
+    dist += dist_table[temp_node][exit_node]
+    greedy_solution = [dist, greedy_list]
+
+    return greedy_solution
 
 def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
              cost_so_far, exit_node, best):
@@ -262,8 +305,29 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    pass
 
+    if cost_so_far >= best[0]:
+        return
+
+    if not relics_remaining:
+        cost_so_far += dist_table[current_loc][exit_node]
+        relics_visited_order.append(exit_node)
+        if cost_so_far <= best[0]:
+            best[0] = cost_so_far
+            best[1] = relics_visited_order.copy()
+        cost_so_far -= dist_table[current_loc][exit_node]
+        relics_visited_order.pop()
+
+    for x in dist_table[current_loc]:
+        if x in relics_remaining:
+            relics_remaining.remove(x)
+            relics_visited_order.append(x)
+            cost_so_far += dist_table[current_loc][x]
+            _explore(dist_table, x, relics_remaining, relics_visited_order, cost_so_far, exit_node, best)
+            relics_remaining.add(x)
+            relics_visited_order.pop()
+
+    return
 
 # =============================================================================
 # PIPELINE
@@ -288,7 +352,7 @@ def solve(graph, spawn, relics, exit_node):
     """
     dist_table = precompute_distances(graph, spawn, relics, exit_node)
     solution = find_optimal_route(dist_table, spawn, relics, exit_node)
-    pass
+    return solution
 
 
 # =============================================================================
