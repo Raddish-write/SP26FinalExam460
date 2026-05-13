@@ -138,9 +138,9 @@ _The route planner relies on this function to calculate the distances of all val
 
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+| Current location | _current_loc__ | _String, because python doesn't have chars_ | _references the key to the current node's position in the graph and dist_table_ |
+| Relics already collected | _relics_remaining_ | _List[String]_ | _tracks all relics visited by the current branch_ |
+| Fuel cost so far | _cost_so_far_ | _float_ | _tracks the total cost_ |
 
 ### Part 5b: Data Structure for Visited Relics
 
@@ -148,11 +148,11 @@ _The route planner relies on this function to calculate the distances of all val
 
 | Property | Your answer |
 |---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Data structure chosen | _set()_ |
+| Operation: check if relic already collected | Time complexity: _O(1)_ |
+| Operation: mark a relic as collected | Time complexity: _O(1)_|
+| Operation: unmark a relic (backtrack) | Time complexity: _O(1)_|
+| Why this structure fits | _Because the hashing means accessing an items location in a set is constant time, it makes it ideal checking and updating_ |
 
 ### Part 5c: Worst-Case Search Space
 
@@ -169,9 +169,9 @@ _The route planner relies on this function to calculate the distances of all val
 
 > Three bullets.
 
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** _Current cost and path traveled to get there._
+- **When it is used:** _Cost is checked for every recursion and on completion._
+- **What it allows the algorithm to skip:** _Paths that would cost more torches than the best found so far may be skipped this way._
 
 ### Part 6b: Lower Bound Estimation
 
