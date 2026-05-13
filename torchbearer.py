@@ -306,6 +306,10 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     This comment is graded.
     """
 
+    """
+    Pruning step stops traveling down branch if current branch length is longer than shortest yet valid branch.
+    Pruning step works because the graphs given are non-negative, and can further traversal can only increase cost_so_far.
+    """
     if cost_so_far >= best[0]:
         return
 
