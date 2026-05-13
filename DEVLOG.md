@@ -21,13 +21,18 @@ Update: Q1 and Q2 completed, and code has been committed and pushed. Q3 and Q4 s
 
 ---
 
-## Entry 2 – [Date]: [Short description]
+## Entry 2 – 12MAY2026: [Short description]
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
 
-_Your entry here._
+_Completed answers 3 and 4. Finished the path selection code while the way previously written code was still fresh in my head from yesterday._
+_Major bug encountered that was causing instability. Discovered it was due to setting collection1() = collection2(). Unlike in other languages_
+_Rather than cloning a collection, python will simply rename the collection to match. Fixed via using collection1() = collection2().copy()_
+_Also encountered issue regarding preferred answer format. Comment instruction says return tuple, howver program checks for 2 element list succeeded_
+_which was much easier to impliment._
 
+_Questions 5 and 6 partially answered based on work done so far. Tomorrow will answer questions analyzing efficiency._
 ---
 
 ## Entry 3 – [Date]: [Short description]
