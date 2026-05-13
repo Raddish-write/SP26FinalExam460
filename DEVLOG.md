@@ -21,7 +21,7 @@ Update: Q1 and Q2 completed, and code has been committed and pushed. Q3 and Q4 s
 
 ---
 
-## Entry 2 – 12MAY2026: [Short description]
+## Entry 2 – 12MAY2026: Search implimentation
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
