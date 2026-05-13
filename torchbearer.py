@@ -34,12 +34,12 @@ def explain_problem():
 
     TODO
     """
-    ans = ("Why a single shortest-path run from S is not enough:"
-           "A single shortest path run is not enough for the torchbearer problem because a shortest path may possibly skip over some relic rooms and a valid route is defined here in part as one that collects every relic."
-           "What decision remains after all inter-location costs are known:"
-           "After the cost to travel between every room has been calculated, the order of the rooms must then be selected."
-           "Why this requires a search over orders (one sentence): "
-           "Because every node must be visited, you cannot greedily select the closest node to the last which means that valid orders must be compared in order to determine the lowest order.")
+    ans = ("Why a single shortest-path run from S is not enough:\n"
+           "A single shortest path run is not enough for the torchbearer problem because a shortest path may possibly skip over some relic rooms and a valid route is defined here in part as one that collects every relic.\n"
+           "What decision remains after all inter-location costs are known:\n"
+           "After the cost to travel between every room has been calculated, the order of the rooms must then be selected.\n"
+           "Why this requires a search over orders (one sentence): \n"
+           "Because every node must be visited, you cannot greedily select the closest node to the last which means that valid orders must be compared in order to determine the lowest order.\n")
     return ans
 
 
@@ -149,7 +149,26 @@ def dijkstra_invariant_check():
 
     TODO
     """
-    return "TODO"
+    ans = ("3a: What the invariant means:\n"
+           ">> For nodes not already finalized (in S):\n"
+           "_for all finalized nodes, the stored value for that node is the shortest distance from the source_\n"
+           ">> For nodes not yet finalized (not in S):\n"
+           "_for all nodes not finalized, the stored value for that node is the shortest distance to that node from the source considering only finalized nodes_\n"
+           "3b: Why each phase holds:\n"
+           ">> Initialization: Why the invariant holds before iteration 1:\n"
+           "_only the source node is finalized with a distance of 0._\n"
+           "_As no intermediate nodes can be considered, every other node position is infinitely far from the source, and so the invariant holds_\n"
+           ">> Maintenance: Why finalizing the min-dist node is always correct\n"
+           "_Prior to any step, the stored value is either the shortest distance from the source or the shortest distance considering only finalized nodes_\n"
+           "_Because each edge has a non-negative weight and thus can never lower a cumulative distance, once all intermediate nodes are considered_\n"
+           "_the lowest cumulative weight chosen is the lowest distance from the source node and thus the invariant holds_\n"
+           ">> Termination: What the invariant guarantees when the algorithm ends\n"
+           "_Once the minheap is empty (when all edges for every node have been considered) the function ends_\n"
+           "_When the function ends, all nodes will have been considered for every node and the shortest has been selected_\n"
+           "_Thus the invariant holds_\n"
+           "3c: Why this matters for the route planner:\n"
+           ">> The route planner relies on Djikstras in order to calculate the distances of valid routes, and so must itself be correct.\n")
+    return ans
 
 
 # =============================================================================
@@ -166,7 +185,25 @@ def explain_search():
 
     TODO
     """
-    return "TODO"
+    ans = ("4a: Why Greedy Fails:\n"
+           ">> Failure mode: proof that greedy fails by counterexample\n"
+           "Consider the greedy strategy of choosing the nearest relic/exit node that has not yet been selected each step\n"
+           ">> Counter-example setup:\n"
+           "Consider the following graph:\n"
+           "\t'S': [('B', 1), ('C', 2), ('D', 2)],\n"
+           "\t'B': [('D', 1), ('T', 1)],\n"
+           "\t'C': [('B', 1), ('T', 10)],\n"
+           "\t'D': [('B', 1), ('C', 1)],\n"
+           "\t'T': []\n"
+           ">> Greedy selected path:\n"
+           "\tS -> B -> D -> C -> T, with a distance of 13\n"
+           ">> Optimal selected path:\n"
+           "\tS -> D -> C -> B -> T, with a distance of 5\n"
+           ">> Why greedy loses:\n"
+           "Because choosing the locally optimal choice restricts future globally optimal choices, a greedy strategy does not garuntee optimality\n"
+           "4b: What the algorithm must explore:\n"
+           "The algorithm must explore valid orders and compare their total length, disregarding lengths higher than those already explored\n")
+    return ans
 
 
 # =============================================================================
@@ -249,6 +286,8 @@ def solve(graph, spawn, relics, exit_node):
 
     TODO
     """
+    dist_table = precompute_distances(graph, spawn, relics, exit_node)
+    solution = find_optimal_route(dist_table, spawn, relics, exit_node)
     pass
 
 
