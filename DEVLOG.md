@@ -35,22 +35,26 @@ _which was much easier to impliment._
 _Questions 5 and 6 partially answered based on work done so far. Tomorrow will answer questions analyzing efficiency._
 ---
 
-## Entry 3 – [Date]: [Short description]
+## Entry 3 – 14MAR2026: Final Answers
 
-_Your entry here._
+_Rexamined the code that I have already finished in order to wrap up questions 5 and 6._
+_Same date as entry below._
 
 ---
 
-## Entry 4 – [Date]: Post-Implementation Reflection
+## Entry 4 – 14MAR2026: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
 
-_Your entry here._
+_I think that the time given for the assignment was more than adequate._
+_Given more time I would likely go back through the classnotes, as I have the feeling that I_
+_missed a vital step in optimization somewhere. However much of the time I spent was more due to_
+_frustration with Python more than the material taught itself._
 
 ---
 
-## Final Entry – [Date]: Time Estimate
+## Final Entry – 14MAR2026: Time Estimate
 
 > Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
 
@@ -60,8 +64,9 @@ _Your entry here._
 | Part 2: Precomputation Design | _1.5_ |
 | Part 3: Algorithm Correctness | _1_ |
 | Part 4: Search Design | _4_ |
-| Part 5: State and Search Space | |
-| Part 6: Pruning | |
-| Part 7: Implementation | |
-| README and DEVLOG writing | |
-| **Total** | |
+| Part 5: State and Search Space | _1_ |
+| Part 6: Pruning | _1_ |
+| Part 7: Implementation | _2_ |
+| README and DEVLOG writing | _2_ |
+| **Total** | _13.5_ |
+-_Note that much of the time is due to trying to remember previous work. Contiguous work would have been faster likely._
