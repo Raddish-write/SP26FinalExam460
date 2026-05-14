@@ -158,8 +158,8 @@ _The route planner relies on this function to calculate the distances of all val
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** _O(k^d) where k is how many nodes deep a search can go, and d is the number of choices required for the optimal solution._
+- **Why:** _In the worst case, no branches are pruned and every path mut be considered for every start point before the optimal path is found._
 
 ---
 
@@ -177,15 +177,16 @@ _The route planner relies on this function to calculate the distances of all val
 
 > Three bullets.
 
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** _Cost traveled so far, nodes not visited yet._
+- **What the lower bound accounts for:** _The first pruned branch is determined naively through greedy selection, which can cut out multiple longer paths._
+- **Why it never overestimates:** _The greedy solution is unlikely to be the least optimal solution because every decision is locally optimal, if not globally._
 
 ### Part 6c: Pruning Correctness
 
 > One to two bullets. Explain why pruning is safe.
 
-- _Your answer here._
+- _Because edge weights are all greater than 0, traversing a branch can never decrease the cost of the path traveled so far._
+- _This means that, if the current path distance is greater than the shortest path thus far, then it can never become shorter and thus can be safely skipped._
 
 ---
 
@@ -193,4 +194,4 @@ _The route planner relies on this function to calculate the distances of all val
 
 > Bullet list. If none beyond lecture notes, write that.
 
-- _Your references here._
+- _None beyond lecture notes._
